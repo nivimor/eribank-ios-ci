@@ -13,12 +13,6 @@ matrix:
     - language: java
       jdk: jdk8
       before_script:
-        - cd android/AppName
+        - chmod +x gradlew
       script:
-        - ./gradlew build connectedCheck
-
-    
-
-notifications:
-  email:
-    - yourname@gmail.com
+        - "./gradlew clean build -i --continue"
