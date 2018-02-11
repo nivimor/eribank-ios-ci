@@ -1,0 +1,12 @@
+os: osx
+language: node_js
+node_js: "6"
+matrix:
+  include:
+    - osx_image: xcode9
+script:
+  - rm -rf build
+  - npm install
+  - ls -R .
+  - cd iPhoneExperiBank
+  - xcodebuild -target ExperiBank -configuration Debug -destination 'platform=iOS,OS=9.1' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
