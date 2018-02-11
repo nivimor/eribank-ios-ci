@@ -1,2 +1,2 @@
-APP_PATH=file=@$PWD/build/Debug-iphoneos/eribank.ipa
+APP_PATH=file=@$PWD/build/Debug-iphoneos/ExperiBank.ipa
 curl -k -X POST https://stage.seetest.io/api/v1/applications/new -H "Authorization: Bearer $ACCESS_KEY" -H "Cache-Control: no-cache" -H "content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" -F "$APP_PATH"
