@@ -2,12 +2,13 @@ matrix:
   include:
     - language: objective-c
       os: osx
-      osx_image: xcode8.3
+      osx_image: xcode9
       before_script:
-        - cd ios/AppName
+        - chmod -R +x 
       script:
-        - xcodebuild -workspace AppName.xcworkspace -scheme AppName
-          -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3' build test
+        - xcodebuild -target ExperiBank -configuration Debug -destination 'platform=iOS,OS=9.1' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+        - ./scripts/zip-app.sh ExperiBank.app ExperiBank
+        - ./scripts/upload-app.sh
 
     - language: android
       jdk: oraclejdk8
