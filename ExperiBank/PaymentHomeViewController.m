@@ -8,6 +8,8 @@
 
 #import "PaymentHomeViewController.h"
 #import "MakePaymentViewController.h"
+#import "MortageRequestOneViewController.h"
+#import "ExpenseReportViewController.h"
 
 @interface PaymentHomeViewController ()
 
@@ -29,9 +31,12 @@
     [super viewDidLoad];
     
     [self.view setAccessibilityLabel:@"paymentHomeView"];
+    [scrollView setAccessibilityLabel:@"scrollView"];
     [makePaymentButton setAccessibilityLabel:@"makePaymentButton"];
     [balanceWebView setAccessibilityLabel:@"balanceWebView"];
     [logoutButton setAccessibilityLabel:@"logoutButton"];
+    
+    scrollView.contentSize = self.view.frame.size;
 }
 
 - (void)viewDidUnload
@@ -57,12 +62,40 @@
 {
     MakePaymentViewController *makePaymentViewController = [[MakePaymentViewController alloc]
                                                             initWithNibName:@"MakePaymentViewController" bundle:nil];
-    [self presentViewController:makePaymentViewController animated:YES completion:nil];
+    [self.navigationController pushViewController:makePaymentViewController animated:YES];
+}
+
+- (IBAction)mortageRequestPressed:(id)sender
+{
+    MortageRequestOneViewController *mortageRequestOneViewController = [[MortageRequestOneViewController alloc] initWithNibName:@"MortageRequestOneViewController" bundle:nil];
+    [self.navigationController pushViewController:mortageRequestOneViewController animated:YES];
+}
+
+- (IBAction)expenseReportPressed:(id)sender
+{
+    ExpenseReportViewController *expenseReportViewController = [[ExpenseReportViewController alloc] initWithNibName:@"ExpenseReportViewController" bundle:nil];
+    [self.navigationController pushViewController:expenseReportViewController animated:YES];
 }
 
 - (IBAction)singoutPressed:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
 }
 
 @end

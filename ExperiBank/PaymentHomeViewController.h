@@ -10,6 +10,7 @@
 
 @interface PaymentHomeViewController : UIViewController
 {
+    IBOutlet UIScrollView *scrollView;
     IBOutlet UIButton *makePaymentButton;
     IBOutlet UIWebView *balanceWebView;
     IBOutlet UIButton *logoutButton;

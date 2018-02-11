@@ -30,26 +30,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [usernameTextField becomeFirstResponder];
-    
     [self.view setAccessibilityLabel:@"loginView"];
+    [scrollView setAccessibilityLabel:@"scrollView"];
+    [versionLabel setAccessibilityLabel:@"versionLabel"];
     [usernameTextField setAccessibilityLabel:@"usernameTextField"];
+    [usernameTextField setAccessibilityIdentifier:@"usernameTextField"];
     [passwordTextField setAccessibilityLabel:@"passwordTextField"];
+    [passwordTextField setAccessibilityIdentifier:@"passwordTextField"];
     [loginButton setAccessibilityLabel:@"loginButton"];
+    
+    scrollView.contentSize = self.view.frame.size;
+    
+    NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+    versionLabel.text = [NSString stringWithFormat:@"Build Version : %@", [infoDict objectForKey:@"CFBundleVersion"]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emailOrPasswordChanged)
+                                                 name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)viewDidUnload
 {
+    [super viewDidUnload];
     usernameTextField = nil;
     passwordTextField = nil;
     loginButton = nil;
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 - (void)displayErrorAlert:(NSString *)message 
@@ -63,7 +67,7 @@
 
 - (IBAction)emailOrPasswordChanged
 {
-    [loginButton setEnabled:[self readyToSignIn]];
+    //[loginButton setEnabled:[self readyToSignIn]];
 }
 
 - (BOOL)readyToSignIn
@@ -105,16 +109,27 @@
     
     PaymentHomeViewController *paymentHomeViewController = [[PaymentHomeViewController alloc]
                                                             initWithNibName:@"PaymentHomeViewController" bundle:nil];
-    [self presentViewController:paymentHomeViewController animated:YES completion:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:paymentHomeViewController];
+    navigationController.navigationBarHidden = YES;
+    [self presentViewController:navigationController animated:YES completion:nil];
     
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	for(UITouch *touch in touches) {
-        [usernameTextField resignFirstResponder];
-        [passwordTextField resignFirstResponder];
-	}
+    [self emailOrPasswordChanged];
+    [self.view endEditing:YES];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
 }
 
 @end

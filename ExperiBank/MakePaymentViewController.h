@@ -10,6 +10,7 @@
 
 @interface MakePaymentViewController : UIViewController <UITextFieldDelegate>
 {
+    IBOutlet UIScrollView *scrollView;
     IBOutlet UITextField *phoneTextField;
     IBOutlet UITextField *nameTextField;
     IBOutlet UITextField *amountTextField;

@@ -29,6 +29,7 @@
     [super viewDidLoad];
     
     [self.view setAccessibilityLabel:@"makePaymentView"];
+    [scrollView setAccessibilityLabel:@"scrollView"];
     [phoneTextField setAccessibilityLabel:@"phoneTextField"];
     [nameTextField setAccessibilityLabel:@"nameTextField"];
     [amountTextField setAccessibilityLabel:@"amountTextField"];
@@ -36,6 +37,8 @@
     [countryButton setAccessibilityLabel:@"countryButton"];
     [sendPaymentButton setAccessibilityLabel:@"sendPaymentButton"];
     [cancelButton setAccessibilityLabel:@"cancelButton"];
+    
+    scrollView.contentSize = self.view.frame.size;
 }
 
 - (void)viewDidUnload
@@ -47,6 +50,11 @@
     countryButton = nil;
     sendPaymentButton = nil;
     [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [sendPaymentButton setEnabled:[self readyToSignIn]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,7 +95,7 @@
         [[NSUserDefaults standardUserDefaults] setFloat:balance forKey:@"Balance"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -103,7 +111,7 @@
 
 - (IBAction)cancelPressed:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)selectCountryPressed:(id)sender
@@ -120,12 +128,19 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	for(UITouch *touch in touches) {
-        [phoneTextField resignFirstResponder];
-        [nameTextField resignFirstResponder];
-        [amountTextField resignFirstResponder];
-        [countryTextField resignFirstResponder];
-	}
+    [self.view endEditing:YES];
+    [sendPaymentButton setEnabled:[self readyToSignIn]];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeRight ||
+            interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
 }
 
 @end

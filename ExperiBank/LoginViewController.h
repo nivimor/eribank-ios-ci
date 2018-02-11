@@ -10,6 +10,8 @@
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate> 
 {
+    IBOutlet UIScrollView *scrollView;
+    IBOutlet UILabel *versionLabel;
     IBOutlet UITextField *usernameTextField;
     IBOutlet UITextField *passwordTextField;
     IBOutlet UIButton *loginButton;
