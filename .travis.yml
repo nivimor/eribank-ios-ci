@@ -2,11 +2,8 @@ matrix:
   include:
     - language: node_js
     os: osx
-
-    node_js: "6"
-    matrix:
-      include:
-        - osx_image: xcode9
+    - osx_image: xcode9
+    node_js: "6"   
     script:
       - rm -rf build
       - npm install
