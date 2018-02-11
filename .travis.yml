@@ -10,5 +10,5 @@ script:
   - ls -R .
   - chmod -R +x ./scripts
   - xcodebuild -target ExperiBank -configuration Debug -destination 'platform=iOS,OS=9.1' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-  - ./scripts/zip-app.sh
+  - ./scripts/zip-app.sh ExperiBank.app ExperiBank
   - ./scripts/upload-app.sh
