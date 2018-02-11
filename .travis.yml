@@ -10,7 +10,7 @@ matrix:
         - ./scripts/zip-app.sh ExperiBank.app ExperiBank
         - ./scripts/upload-app.sh
 
-    - language: java
+    - language: android
           jdk: oraclejdk8
           before_script:
             - chmod +x ./gradlew
