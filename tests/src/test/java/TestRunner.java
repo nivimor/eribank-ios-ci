@@ -14,11 +14,11 @@ public class TestRunner {
     public void test() {
 
         Class[] cls = {
-                iosEriBankPaymentTest.class,
-                iosEriBankPaymentTest.class,
-                iosEriBankPaymentTest.class,
-                iosEriBankPaymentTest.class,
-                iosEriBankPaymentTest.class,
+                iosEriBankAddCountriesTest.class,
+                iosEriBankAddCountriesTest.class,
+                iosEriBankAddCountriesTest.class,
+                iosEriBankAddCountriesTest.class,
+                iosEriBankAddCountriesTest.class,
         };
 
         //Parallel among classes
