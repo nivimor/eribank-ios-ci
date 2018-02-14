@@ -4,9 +4,15 @@ matrix:
       os: osx
       osx_image: xcode9
       before_script:
-        - chmod -R +x 
+        - chmod -R +x ./scripts
       script:
         - xcodebuild -target ExperiBank -configuration Debug -destination 'platform=iOS,OS=9.1' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
         - ./scripts/zip-app.sh ExperiBank.app ExperiBank
         - ./scripts/upload-app.sh
-        - "./gradlew clean build -i --continue"
+
+    - language: java
+      jdk: jdk8
+      before_script:
+        - chmod +x gradlew
+      script:
+        - ./gradlew clean build -i --continue
