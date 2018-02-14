@@ -1,4 +1,4 @@
-cd build/Debug-iphoneos
+cd /app/build/Debug-iphoneos
 if [ -d "Payload" ]; then
     rm -fr Payload/*
 else
