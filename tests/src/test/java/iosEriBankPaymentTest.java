@@ -13,8 +13,18 @@ public class iosEriBankPaymentTest {
 
     IOSDriver driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
+
+    public  ArrayList newCountries = new ArrayList<String>(Arrays.asList("Austria", "United Arab Emirates", "Croatia", "Iceland", "Netherlands"));
+    public static int i = -1;
+    public int countryIndex;
+
     String testName = "Testing iOS App with Java";
     String accessKey = System.getenv("ACCESS_KEY");
+
+    public EriBankPaymentTest(){
+        i += 1;
+        countryIndex = i;
+    }
 
     @Before
     public void setUp() throws MalformedURLException {
