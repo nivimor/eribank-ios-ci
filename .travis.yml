@@ -8,18 +8,10 @@ matrix:
     - chmod +x ./tests/gradlew
     script:
     - cd app
-    - echo ---------------------------
-    - echo
-    - echo Building The Application...
-    - echo
-    - echo ---------------------------
+    - "../scripts/output.sh 'Preparing The Application for Upload...'"
     - xcodebuild -target ExperiBank -configuration Debug -destination 'platform=iOS,OS=9.1'
       CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-    - echo ---------------------------
-    - echo
-    - echo Application Built Successfully...
-    - echo
-    - echo ---------------------------
+    - "../scripts/output.sh 'Application Built Successfully...'"
     - cd ..
     - "./scripts/output.sh 'Preparing The Application for Upload...'"
     - "./scripts/zip-app.sh ExperiBank.app ExperiBank"
@@ -35,3 +27,6 @@ notifications:
   slack:
     rooms:
       secure: efjn2wN6lxyLpd0vnq8DSs0S4f1DIFNAvO5oWC3wAaeKG+2Jv7D9H59ddWcGhSQkVj/Py307510QhAh5Q8JIN0OptsNXGEkQGGpHQ3AlWCbwT2Wu8KmJHRwcsNsdZ70SdKQvV2PtVo44e3RbMIUrCoAyhJdtMqDf7RcjCv6JePvt2lw22UfcB8ZZotP8uMYuQiTmLRFm7NiQRneoZIg7Q7iOzspC1HH0EaliMjSqkUbKp59HfGurGaeh4sncWniWX1WBjSXejuck7Ez146X+M5AJbQg9CXUHYc19m1a/gay2ZKhC/TSSD4UAyVTEaqarcsLTXZJoAfW1OF9PyIRkE7VhQF/oEOwcY++z6Napgz3c7CQM5BZUvXp2rIROAEFS/zw1sQW008E6yLB6U1TI+ITL/tn7fjHw+4sSyFzGwuhnuhVnJeOgwJL2UmeYOmSqQSZ4owCw12A+AiTfUCs/8wvgOva1h3x3IYpdYmTeGfI2INhxO/X8UD06lPIOh6myU3/zYaey3RhXWb2IOGzbCzCEAVjC/o/Z8domJ1Hotzk3hPHZdtI8fJqO6Io4SP6iClKArLRxxPPL5pzl/vDdNARFBz8VIJkfVLR1v85kCADDKB2cZo3KRixKKydW/4OlvBOtAO42SJrIeKfzcXngxJ+Z89RUzK0+jjP7LZ3kSZQ=
+after_success:
+    - "./scripts/output.sh 'Merging to Master...'"
+    - ./scripts/merge.sh

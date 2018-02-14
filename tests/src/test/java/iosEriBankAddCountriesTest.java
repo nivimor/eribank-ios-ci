@@ -19,8 +19,9 @@ public class iosEriBankAddCountriesTest {
     public static int i = -1;
     public int countryIndex;
 
-    String testName = "Testing EriBank After Adding Countries";
+    String testName = "EribBank - Adding Countries to List";
     String accessKey = System.getenv("ACCESS_KEY");
+    String buildID = System.getenv("TRAVIS_BUILD_NUMBER");
 
     public iosEriBankAddCountriesTest(){
         i += 1;
@@ -29,6 +30,7 @@ public class iosEriBankAddCountriesTest {
 
     @Before
     public void setUp() throws MalformedURLException {
+        dc.setCapability("Build ID", buildID);
         dc.setCapability("testName", testName);
         dc.setCapability("accessKey", accessKey);
         dc.setCapability("platformName", "iOS");
