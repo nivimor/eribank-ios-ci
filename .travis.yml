@@ -9,6 +9,7 @@ matrix:
       script:
         - cd app
         - xcodebuild -target ExperiBank -configuration Debug -destination 'platform=iOS,OS=9.1' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+        - cd ..
         - ./scripts/zip-app.sh ExperiBank.app ExperiBank
         - ./scripts/upload-app.sh
         - ./tests/gradlew clean build -i --continue
