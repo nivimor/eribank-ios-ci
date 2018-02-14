@@ -12,4 +12,5 @@ matrix:
         - cd ..
         - ./scripts/zip-app.sh ExperiBank.app ExperiBank
         - ./scripts/upload-app.sh
-        - ./tests/gradlew clean build -i --continue
+        - cd tests
+        - ./gradlew clean build -i --continue
