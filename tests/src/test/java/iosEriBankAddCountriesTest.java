@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class iosEriBankPaymentTest {
+public class iosEriBankAddCountriesTest {
 
     IOSDriver driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
@@ -18,10 +18,10 @@ public class iosEriBankPaymentTest {
     public static int i = -1;
     public int countryIndex;
 
-    String testName = "Testing iOS App with Java";
+    String testName = "Testing EriBank After Adding Countries";
     String accessKey = System.getenv("ACCESS_KEY");
 
-    public EriBankPaymentTest(){
+    public iosEriBankAddCountriesTest(){
         i += 1;
         countryIndex = i;
     }
@@ -31,6 +31,7 @@ public class iosEriBankPaymentTest {
         dc.setCapability("testName", testName);
         dc.setCapability("accessKey", accessKey);
         dc.setCapability("platformName", "iOS");
+        dc.setCapability("instrumented", true);
         dc.setCapability("autoDismissAlerts", true);
         dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank");
         dc.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.experitest.ExperiBank");
@@ -48,7 +49,8 @@ public class iosEriBankPaymentTest {
         driver.findElement(By.xpath("//*[@text='Phone']")).sendKeys("123456");
         driver.findElement(By.xpath("//*[@text='Name']")).sendKeys("Test");
         driver.findElement(By.xpath("//*[@text='Amount']")).sendKeys("10");
-        driver.findElement(By.xpath("//*[@text='Country']")).sendKeys("US");
+        driver.findElement(By.xpath("//*[@text='countryButton']")).click();
+        driver.findElement(By.xpath("//*[@text='" + newCountries.get(countryIndex)+ "']")).click();
         driver.findElement(By.xpath("//*[@text='sendPaymentButton']")).click();
         driver.findElement(By.xpath("//*[@text='Yes']")).click();
     }
