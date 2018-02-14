@@ -6,15 +6,23 @@ matrix:
     before_script:
     - chmod -R +x ./scripts
     - chmod +x ./tests/gradlew
+    - "./scripts/output.sh 'Starting The Build...'"
     script:
     - cd app
+    - "./scripts/output.sh 'Building The Application...'"
     - xcodebuild -target ExperiBank -configuration Debug -destination 'platform=iOS,OS=9.1'
       CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+    - "./scripts/output.sh 'Succesfully Built The Application...'"
     - cd ..
+    - "./scripts/output.sh 'Preparing The Application for Upload...'"
     - "./scripts/zip-app.sh ExperiBank.app ExperiBank"
+    - "./scripts/output.sh 'Uploading The Application...'"
     - "./scripts/upload-app.sh"
+    - "./scripts/output.sh 'Successfully Uploaded The Application...'"
+    - "./scripts/output.sh 'Running Tests...'"
     - cd tests
     - "./gradlew clean build -i --continue"
+    - "./scripts/output.sh 'Sednding Build Status to Slack...'"
 notifications:
   slack:
     rooms:
