@@ -15,18 +15,9 @@ public class iosEriBankAddCountriesTest {
     IOSDriver driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
 
-    public  ArrayList newCountries = new ArrayList<String>(Arrays.asList("Austria", "United Arab Emirates", "Croatia", "Iceland", "Netherlands"));
-    public static int i = -1;
-    public int countryIndex;
-
-    String testName = "EribBank - Adding Countries to List";
+    String testName = "Login with valid user;
     String accessKey = System.getenv("ACCESS_KEY");
     String buildID = System.getenv("TRAVIS_BUILD_NUMBER");
-
-    public iosEriBankAddCountriesTest(){
-        i += 1;
-        countryIndex = i;
-    }
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -43,19 +34,12 @@ public class iosEriBankAddCountriesTest {
     }
 
     @Test
-    public void testYouriOSApp() {
+    public void testLoginEribankiOS() {
 
         driver.findElement(By.xpath("//*[@text='Username']")).sendKeys("company");
         driver.findElement(By.xpath("//*[@text='Password']")).sendKeys("company");
         driver.findElement(By.xpath("//*[@text='loginButton']")).click();
-        driver.findElement(By.xpath("//*[@text='makePaymentButton']")).click();
-        driver.findElement(By.xpath("//*[@text='Phone']")).sendKeys("123456");
-        driver.findElement(By.xpath("//*[@text='Name']")).sendKeys("Test");
-        driver.findElement(By.xpath("//*[@text='Amount']")).sendKeys("10");
-        driver.findElement(By.xpath("//*[@text='countryButton']")).click();
-        driver.findElement(By.xpath("//*[@text='" + newCountries.get(countryIndex)+ "']")).click();
-        driver.findElement(By.xpath("//*[@text='sendPaymentButton']")).click();
-        driver.findElement(By.xpath("//*[@text='Yes']")).click();
+        driver.findElement(By.xpath("//*[@text='logoutButton']")).click();
     }
 
     @After
