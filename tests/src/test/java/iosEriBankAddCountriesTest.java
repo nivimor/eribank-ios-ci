@@ -30,7 +30,7 @@ public class iosEriBankAddCountriesTest {
 
     @Before
     public void setUp() throws MalformedURLException {
-        dc.setCapability("Build ID", buildID);
+        dc.setCapability("Build Number", buildID);
         dc.setCapability("testName", testName);
         dc.setCapability("accessKey", accessKey);
         dc.setCapability("platformName", "iOS");
