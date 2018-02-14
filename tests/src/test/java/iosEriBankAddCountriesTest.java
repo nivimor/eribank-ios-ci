@@ -15,7 +15,7 @@ public class iosEriBankAddCountriesTest {
     IOSDriver driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
 
-    String testName = "Login with valid user;
+    String testName = "Login with valid user";
     String accessKey = System.getenv("ACCESS_KEY");
     String buildID = System.getenv("TRAVIS_BUILD_NUMBER");
 
@@ -36,8 +36,8 @@ public class iosEriBankAddCountriesTest {
     @Test
     public void testLoginEribankiOS() {
 
-        driver.findElement(By.xpath("//*[@text='Username']")).sendKeys("company");
-        driver.findElement(By.xpath("//*[@text='Password']")).sendKeys("company");
+        driver.findElement(By.xpath("//*[@id='usernameTextField']")).sendKeys("company");
+        driver.findElement(By.xpath("//*[@id='passwordTextField']")).sendKeys("company");
         driver.findElement(By.xpath("//*[@text='loginButton']")).click();
         driver.findElement(By.xpath("//*[@text='logoutButton']")).click();
     }
