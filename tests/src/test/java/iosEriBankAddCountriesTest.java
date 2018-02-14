@@ -8,7 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 public class iosEriBankAddCountriesTest {
 
     IOSDriver driver = null;
