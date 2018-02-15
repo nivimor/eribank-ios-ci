@@ -27,7 +27,5 @@ notifications:
   slack:
     rooms:
       secure: WLA5K66Ty3Zm7rXMehVyhDfO4wl/vJRvZVSggVmuK8Ty678YnMQWeaSC+ZRbBoLpVHzuXEZWGafubIz4b63GAVjVyRkl4WA+GONXFm0k36StIDX4LxQRHrE6n35T78VP3HJz14UWthfCKvSDORpreu/IJybiDHTbmuMUcN8oAEweo6XeFTcYzZAHRe7+YxB5yBPdrnEcIm7GgeAeETRCiuu6atrGayf9P5mgWK2WTW5G6KCBUyF8jAY3NBdBh0zDMDLH8qhk4y7+OdLGO0xskgS5hOfzNtYDCd0Mw+5My0+6JgHyhKDtLCitkuT7PYmQgTl7Oya1Dhlh4kDJrARzlvfB23oeJ6s0ZRjW4AZsKtf1U/gDugAkaYeh/n7rGBwp1Msomt7r57dU3eW5E/gnNrCoEQy4NUmzQKsS01jbYiqu/Nin0R45hch02kNT8I2K+A2ltJ5sJms47UvV1uJNW+lO19xTh0iWAMkWGxvYzMPZFPUO93TroAUD0EhYw3gAwh7Jpl3zzvUtfwmBSX42irYWUVsKqGoLD0XhxVlnWdo3cCsRISBSABgkqQpyBMD4Yr6lXMBRbovbpQEz2c5nG+LRNgTA0L4h852jDr+JA8iWmzHflG9M5IW1TAoE+jGRUL3AnQhnYMv5s1xpt5pRzn/tcYV0ORJUrHak4K85wC0=
-    template:
-    - Praise the Lord, all tests have PASSED!
 after_success:
 - "./scripts/merge.sh"
