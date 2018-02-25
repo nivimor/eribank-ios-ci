@@ -1,10 +1,10 @@
 # iOS Application CI Pipeline
 
 ## This repo contains the following:
-1. A demo Android app 
-2. A simple Appium based test
-3. A .yml providing instructions for Travis CI
-4. scripts for bundling and uploading the app
+1. A demo iOS app (written in Objective C)
+2. A simple Appium based test (written in Java)
+3. A .yml with instructions for Travis CI
+4. Scripts for bundling and uploading the app
 
 ### Instructions how to run this pipeline
 1. Fork or clone this repo
