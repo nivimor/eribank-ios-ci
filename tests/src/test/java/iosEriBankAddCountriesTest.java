@@ -16,7 +16,7 @@ public class iosEriBankAddCountriesTest {
     DesiredCapabilities dc = new DesiredCapabilities();
 
     String testName = "Login with valid user";
-    String accessKey = System.getenv("ACCESS_KEY");
+    String accessKey = System.getenv("ACCESS_KEY"); // your seetest.io access key
     String buildID = System.getenv("TRAVIS_BUILD_NUMBER");
 
     @Before
